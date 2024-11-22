@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Page with Navbar and Footer</title>
+    <link rel="stylesheet" href="/CSS/style.css">
+    <!-- Add Font Awesome for Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+<nav>
+    <div class="container">
+        <div class="logo">
+            <p style="font-size:30px; display:inline-block; margin-left: 10px;"><a style="text-decoration: none;color: inherit;" href="/index">Sustainify</a></p>
+        </div>
+        <div class="nav">
+            <ul>
+                <li><a href="/index">Home</a></li>
+                <li><a href="/ScrapRates">Scrap Rates</a></li>
+                <li><a href="/PriceCalculator">Price Calculator</a></li>
+                <li><a href="/Profile"><%=username%></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <!-- Main Form Section -->
+    <div class="container">
+        <div class="form-section">
+            <div class="form-header">
+            </div><br><br>
+            <form method="post" action="/CreatePickup">
+                <div class="form-group">
+                    <label for="date">Enter Date</label>
+                    <input type="date" id="date" placeholder="DD/MM/YY" name="date">
+                </div>
+
+                <div class="form-group">
+                    <label for="time">Enter Time</label>
+                    <input type="time" id="time" name="time">
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" id="address" placeholder="Enter Address" name="address">
+                </div>
+
+                <div class="form-group">
+                    <label for="pincode">Pincode</label>
+                    <input type="number" id="pincode" placeholder="Pincode" name="pincode">
+                </div>
+
+                <div class="form-group">
+                    <label for="weight">Estimated Weight</label>
+                    <select id="weight" name="weight">
+                        <option>Select Weight</option>
+                        <option>Upto 20 kg</option>
+                        <option>Upto 50 kg</option>
+                        <option>Upto 100 kg</option>
+                        <option>Upto 300 kg</option>
+                        <option>Over 500 kg</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="remarks">Remarks (Optional)</label>
+                    <textarea id="remarks" placeholder="Add any additional remarks here" name="remarks"></textarea>
+                </div>
+
+                <button type="submit" class="submit-button">SCHEDULE A PICKUP</button>
+            </form>
+        </div>
+
+        <div class="image-section">
+            <img src="/assets/img/image.jpg" alt="Illustration" class="illustration">
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footernav" id="about_us">
+            <div class="social_icons">
+                <a href="https://www.facebook.com/iiitall/" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/iiit.allahabad/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com/iiita_official?lang=en" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+            <div class="footernav">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="https://www.iiita.ac.in/" target="_blank">About IIITA</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footerbottom">
+            <p>Copyright &copy;2023</p>
+        </div>
+    </footer>
+</body>
+</html>

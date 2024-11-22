@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <link rel="stylesheet" href="CSS/PickUpBoylogin.css">
+</head>
+<body>
+    <div class="container">
+        <div id="form-container">
+            <form id="pickup-signup-form" method="post" action="/PickUpSignup">
+                <h2 style="text-align: center;">Sign Up</h2>
+                <p style="margin-top: 5px;color: red;text-align: center;"> <%= errorMessage %></p>
+                <input name="name"  type="text" id="signup-name" placeholder="Name" required style="width: 275px;">
+                <input  name="email" type="email" id="signup-email" placeholder="Email" required style="width: 275px;">
+                <input name="address"  type="text" id="signup-address" placeholder="Address" required style="width: 275px;">
+                <input name="pincode" type="number" id="signup-pincode" placeholder="Pincode" required minlength="6" maxlength="9" style="width: 275px;" oninput="validatePincode(this)">
+                <input name="aadhar" type="number" id="signup-aadhar" placeholder="Aadhar - XXXX-XXXX-XXXX" required style="width: 275px;" oninput="validateAadhar(this)">
+
+                <input name="password" type="password" id="signup-password" placeholder="Password" required  minlength="8" style="width: 275px;">
+                <input  name="confpassword" type="password" id="signup-confirm-password" minlength="8" placeholder="Confirm Password" required style="width: 275px;">
+                <button type="submit">Sign Up</button>
+                <p>Already have an account? <a href="/pickupBoyLoginPage" id="show-login">Login</a></p>
+            </form>
+        </div>
+    </div>
+    <script>
+        function validatePincode(input) {
+          const value = input.value;
+          if (value.length < 6 || value.length > 9) {
+            input.setCustomValidity("Pincode must be between 6 and 9 digits.");
+          } else {
+            input.setCustomValidity("");
+          }
+        }
+        function validateAadhar(input) {
+            const value = input.value;
+            if (value.length !== 12) {
+                input.setCustomValidity("Aadhar must be exactly 12 digits.");
+            } else {
+                input.setCustomValidity("");
+            }
+        }
+    </script>
+</body>
+</html>

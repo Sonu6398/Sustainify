@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <script src="https://kit.fontawesome.com/c5a92afa13.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        /* Navbar Styling */
+        nav {
+            height: 75px;
+            background-color: black;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            align-items: center;
+        }
+
+        nav .logo a {
+            color: white;
+            font-size: 35px;
+            font-weight: bold;
+            text-decoration: none;
+            margin: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            font-size: 18px;
+            text-decoration: none;
+            text-transform: uppercase;
+            padding: 0 30px;
+        }
+
+        nav ul li a:hover {
+            color: green;
+        }
+
+        /* Dashboard Content */
+        .dashboard-container {
+            text-align: center;
+            padding: 50px 20px;
+            flex-grow: 1;
+        }
+
+        .dashboard-container h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .dashboard-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .dashboard-links li {
+            margin: 10px 0;
+        }
+
+        .dashboard-links li a {
+            text-decoration: none;
+            font-size: 1.2rem;
+            color: #007BFF;
+            transition: color 0.3s ease;
+        }
+
+        .dashboard-links li a:hover {
+            color: #0056b3;
+        }
+
+        /* Box Styling for buttons */
+        .box-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        .box {
+            width: 30%;
+            text-align: center;
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .box img {
+            width: 100%; /* Ensure the image spans the full width of the box */
+            height: 350px; /* Fixed height for all images */
+            object-fit: cover; /* Ensures images are not distorted */
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+        .box button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            border: none;
+            background-color: black;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .box button:hover {
+            background-color: rgb(56, 56, 56);
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            width: 100%;
+        }
+
+        footer .footernav {
+            margin-bottom: 20px;
+        }
+
+        footer .footernav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        footer .footernav ul li {
+            margin: 0 15px;
+        }
+
+        footer .footernav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        footer .footernav ul li a:hover {
+            color: green;
+        }
+
+        footer .social_icons {
+            margin-bottom: 20px;
+        }
+
+        footer .social_icons a {
+            text-decoration: none;
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        footer .social_icons a:hover {
+            color: green;
+        }
+
+        .footerbottom {
+            font-size: 14px;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 700px) {
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            footer .footernav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .box-container {
+                flex-direction: column;
+            }
+
+            .box {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="container">
+            <p class="logo"><a href="/index">Sustainify</a></p>
+            <ul>
+                <li><a href="/AdminDashboard">Home</a></li>
+                <li><a href="/ScrapRates">Scrap Rates</a></li>
+                <li><a href="/PriceCalculator">Price Calculator</a></li>
+                <li><a href="#AbtUs">About Us</a></li>
+                <li><a href="<%= Account === 'Login' ? '/AskPage' : '/AdminProfile' %>"><%= Account %></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="dashboard-container">
+        <h1>Welcome, Admin</h1>
+
+        <!-- Box Section with Buttons -->
+        <div class="box-container">
+            <!-- Box 1: Add Scrap Item -->
+            <div class="box">
+                <img src="/assets/img/AddItemImageP.jpg" alt="Add Scrap Item">
+                <button onclick="window.location.href='/admin/add-scrap-item'">Add Scrap Item</button>
+            </div>
+            <!-- Box 2: View Pickups -->
+            <div class="box">
+                <img src="/assets/img/pickupsImage.jpg" alt="View Pickups">
+                <button onclick="window.location.href='/CheckPickups'">View Pickups</button>
+            </div>
+            <!-- Box 3: Check Pickup Boy Applications -->
+            <div class="box">
+                <img src="/assets/img/ReviewApplication.jpg" alt="Check Pickup Boy Applications">
+                <button onclick="window.location.href='/CheckPickupApplications'">Check Pickup Boy Applications</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footernav">
+            <div class="social_icons">
+                <a href="https://www.facebook.com/iiitall/"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.instagram.com/iiit.allahabad/"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://twitter.com/iiita_official?lang=en"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+            <ul>
+                <li><a href="/index">Home</a></li>
+                <li><a href="/logout">Logout</a></li>
+                <li><a href="https://www.iiita.ac.in/" target="_blank">About IIITA</a></li>
+            </ul>
+        </div>
+        <div class="footerbottom">
+            <p>Copyright &copy; 2023 Sustainify</p>
+        </div>
+    </footer>
+
+</body>
+</html>

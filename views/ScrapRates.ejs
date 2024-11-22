@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrap Rates</title>
+    <link rel="stylesheet" href="/CSS/ScrapRatesStylesheet.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <p><b>Sustainify</b></p>
+        <ul>
+            <li><a href="/index">Home</a></li>
+            <li><a href="/ScrapRates">Scrap Rates</a></li>
+            <li><a href="/PriceCalculator">Price Calculator</a></li>
+        </ul>
+    </nav>
+
+    <section class="scrap-rates">
+        <h1 style="text-align: center;">Scrap Rates</h1>
+        <% const categories = {}; %>
+        <% scrapItems.forEach(item => { %>
+            <% if (!categories[item.category]) categories[item.category] = []; %>
+            <% categories[item.category].push(item); %>
+        <% }); %>
+
+        <% for (const category in categories) { %>
+            <h2 style="text-align: center;" class="category-title"><%= category %></h2>
+            <div class="grid">
+                <% categories[category].forEach(item => { %>
+                    <div class="card">
+                        <img src="<%= item.imageUrl || '/images/default-image.jpg' %>" alt="<%= item.name %>" class="item-image">
+                        <div class="price">RS <%= item.price %>/<%= item.unit %></div>
+                        <div class="description"><%= item.name %></div>
+                    </div>
+                    
+                <% }); %>
+            </div>
+        <% } %>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footernav" id="about_us">
+            <div class="social_icons">
+                <a href="https://www.facebook.com/iiitall/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.instagram.com/iiit.allahabad/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://twitter.com/iiita_official?lang=en" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+            <div class="footernav-links">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="https://www.iiita.ac.in/" target="_blank">About IIITA</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footerbottom">
+            <p>Copyright &copy;2023</p>
+        </div>
+    </footer>
+
+</body>
+</html>

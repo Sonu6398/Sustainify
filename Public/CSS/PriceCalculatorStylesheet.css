@@ -1,0 +1,202 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('/assets/img/backgrounnd.jpg') no-repeat center center fixed;
+    background-size: cover;
+    backdrop-filter: blur(5px);
+}
+
+/* Navbar styles */
+nav {
+    background-color: #333;
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+}
+nav p {
+    color: white;
+    font-size: 35px;
+    margin: 0;
+}
+nav ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+nav ul li {
+    margin-left: 30px;
+}
+nav ul li a {
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+nav ul li a:hover {
+    color: green;
+}
+
+/* Container styles */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+h1 {
+    color: #444;
+    text-align: center;
+}
+
+.instructions {
+    background-color: #e7f3ff;
+    border-left: 5px solid #2196F3;
+    padding: 15px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    border-radius: 5px;
+}
+
+.form-section {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+input[type="number"], select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(58, 56, 56);
+}
+
+.total-price {
+    font-size: 18px;
+    color: #333;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* Footer styles */
+footer {
+    width: 100%;
+    bottom: 0;
+    background-color: black;
+    height: 250px;
+    border-top-left-radius: 125px;
+    padding: 100px 40px 30px;
+}
+
+footer p {
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    justify-content: space-evenly;
+}
+
+.footernav {
+    margin: 30px 0;
+}
+
+.footernav ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+
+.footernav ul li a {
+    color: white;
+    margin: 20px;
+    text-decoration: none;
+    font-size: 1.3em;
+    opacity: 0.7;
+    transition: 0.5s;
+}
+
+.footernav ul li a:hover {
+    opacity: 1;
+}
+
+.footerbottom {
+    padding: 20px;
+    text-align: center;
+}
+
+.footerbottom p {
+    color: white;
+}
+
+.social_icons {
+    display: flex;
+    justify-content: center;
+}
+
+.social_icons a {
+    text-decoration: none;
+    padding: 10px;
+    background-color: white;
+    margin: 10px;
+    border-radius: 50%;
+}
+
+.social_icons a i {
+    font-size: 2em;
+    color: black;
+    opacity: 0.9;
+}
+
+.social_icons a:hover {
+    background-color: #111;
+    transition: 0.5s;
+}
+
+.social_icons a:hover i {
+    color: white;
+    transition: 0.5s;
+}
+
+@media (max-width: 700px) {
+    .footernav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footernav ul li {
+        text-align: center;
+        margin: 10px;
+    }
+
+    .social_icons a {
+        padding: 8px;
+        margin: 4px;
+    }
+
+    .footernav ul li a {
+        width: 100%;
+    }
+}

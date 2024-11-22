@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Scrap Item</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(120deg, #f6f8fa, #dfe3e8);
+            color: #343a40;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 75px;
+            background-color: black;
+            padding: 0 50px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            margin: 0 20px;
+        }
+
+        nav li a {
+            font-size: 18px;
+            text-transform: uppercase;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav li a:hover {
+            color: gray;
+        }
+
+        /* Main Container */
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 60px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            background-color: #ffffff;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-section {
+            flex: 1;
+            padding: 40px;
+            background: #f8f9fa;
+        }
+
+        .form-section h1 {
+            margin-bottom: 25px;
+            font-size: 30px;
+            color: #212529;
+            border-bottom: 3px solid #000000;
+            display: inline-block;
+        }
+
+        .form-section label {
+            display: block;
+            margin: 15px 0 5px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #495057;
+        }
+
+        .form-section input, .form-section button {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-section input:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 8px rgba(13, 110, 253, 0.3);
+            outline: none;
+        }
+
+        .form-section button {
+            background-color: black;
+            color: white;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-section button:hover {
+            background-color:rgb(63, 63, 63);
+        }
+
+        .image-section {
+            flex: 1;
+            /* background: url('assets/img/AddItemImage.jpg') no-repeat center center/cover; */
+        }
+
+        /* Footer */
+        footer {
+            background-color: black;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        footer .social_icons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        footer .social_icons a {
+            display: inline-block;
+            margin: 0 10px;
+            text-decoration: none;
+            background-color: white;
+            border-radius: 50%;
+            padding: 10px;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        footer .social_icons a:hover {
+            background-color: #0d6efd;
+            transform: scale(1.1);
+        }
+
+        footer .social_icons i {
+            font-size: 20px;
+            color: black;
+        }
+
+        footer p {
+            margin-top: 10px;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="/index">Home</a></li>
+            <li><a href="/ScrapRates">Scrap Rates</a></li>
+            <li><a href="/PriceCalculator">Price Calculator</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Form Section -->
+        <div class="form-section">
+            <h1>Add Scrap Item</h1>
+            <form action="/admin/add-scrap-item" method="POST">
+                <label for="category">Category:</label>
+                <input type="text" id="category" name="category" placeholder="Enter scrap category" required>
+
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter scrap name" required>
+
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" placeholder="Enter scrap price" required>
+
+                <label for="unit">Unit:</label>
+                <input type="text" id="unit" name="unit" placeholder="Enter unit (e.g., kg, lbs)" required>
+
+                <label for="imageUrl">Image URL:</label>
+                <input type="text" id="imageUrl" name="imageUrl" placeholder="Enter image URL" required>
+
+                <button type="submit">Add Item</button>
+            </form>
+        </div>
+
+        <!-- Image Section -->
+        <div class="image-section">
+            <img src="/assets/img/AddItemImage.jpg" alt="img">
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <br><br><br>
+        <div class="social_icons">
+            <a href="https://www.facebook.com/iiitall/"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/iiit.allahabad/"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com/iiita_official?lang=en"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p>&copy; 2024 Sustainify. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

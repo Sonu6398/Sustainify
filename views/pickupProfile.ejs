@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f7;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Container for the profile */
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        /* Header Styling */
+        .header {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+
+        /* Profile Card Styling */
+        .profile-card {
+            background-color: #fafafa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-item {
+            margin: 10px 0;
+            font-size: 1.1rem;
+        }
+
+        .profile-item strong {
+            color: #333;
+        }
+
+        /* Logout Button Styling */
+        .logout-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .home-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .home-btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            .header {
+                font-size: 1.5rem;
+            }
+
+            .profile-item {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="header">User Profile</h1>
+        <div class="profile-card">
+            <% if (user) { %>
+                <p class="profile-item"><strong>Name:</strong> <%= user.Name %></p>
+                <p class="profile-item"><strong>Email:</strong> <%= user.Email %></p>
+                <!-- <p class="profile-item"><strong>Password:</strong> <%= user.Password %></p> Avoid showing password in production -->
+                <form action="/logout" method="GET">
+                    <button class="logout-btn">Logout</button>
+                </form>
+                <br><br>
+                <a href="/index" class="home-btn">Home</a>
+            <% } else { %>
+                <p class="profile-item">User not found or not logged in.</p>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>

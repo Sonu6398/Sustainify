@@ -1,0 +1,58 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    position: relative; /* Allow absolute positioning of pseudo-element */
+    height: 100vh; /* Ensure body takes full height */
+    overflow: hidden; /* Prevent scroll bars from appearing */
+    display: flex; /* Use flexbox to center content */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+body::before {
+    content: ""; /* Create a pseudo-element */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../assets/img/backgrounnd.jpg') no-repeat center center fixed;
+    background-size: cover;
+    opacity: 0.6; /* Set the desired opacity */
+    z-index: -1; /* Position it behind other content */
+}
+
+.container {
+    width: 300px;
+    padding: 40px;
+    background-color: rgba(256, 256, 256, 0.9); /* Keep the container slightly opaque */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #030303cb;
+}
+
+p {
+    text-align: center;
+}

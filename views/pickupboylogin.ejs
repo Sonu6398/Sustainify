@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth Page</title>
+    <link rel="stylesheet" href="CSS/LoginPageStylesheet.css">
+    <style>
+        .error-message {
+            color: red;
+            margin-top: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="form-container">
+            <!-- Login Form -->
+            <form id="pickup-login-form" method="post" action="/PickUpLogin">
+                <h2 style="text-align: center;">Login</h2>
+                <p class="error-message"><%= errorMessage %></p>
+                <input name="email" type="email" id="login-email" placeholder="Email" required style="width: 275px;">
+                <input minlength="8" name="password" type="password" id="login-password" placeholder="Password" required
+                    style="width: 275px;">
+                <button type="submit"><b>Login</b></button>
+                <p>Don't have an account? <a href="/pickupBoySignUpPage" id="show-signup">Sign Up</a></p>
+                <p><a href="#" id="forgot-password">Forgot Password?</a></p>
+            </form>
+
+            <!-- Forgot Password Form -->
+            <form id="forgot-password-form" style="display: none;" method="post" action="/LoginPage">
+                <h2 style="text-align: center;">Forgot Password</h2>
+                <input type="email" id="forgot-password-email" placeholder="Enter your email" required
+                    style="width: 275px;" name="forgetemail">
+                <button type="submit">Send OTP</button>
+                <p>Remembered your password? <a href="#" id="show-login-from-forgot">Login</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Get elements
+        const forgotPasswordLink = document.getElementById('forgot-password');
+        const loginForm = document.getElementById('pickup-login-form');
+        const forgotPasswordForm = document.getElementById('forgot-password-form');
+        const showLoginFromForgot = document.getElementById('show-login-from-forgot');
+
+        // Show Forgot Password form and hide Login form
+        forgotPasswordLink.addEventListener('click', function (e) {
+            e.preventDefault();
+            loginForm.style.display = 'none';
+            forgotPasswordForm.style.display = 'block';
+        });
+
+        // Show Login form and hide Forgot Password form
+        showLoginFromForgot.addEventListener('click', function (e) {
+            e.preventDefault();
+            forgotPasswordForm.style.display = 'none';
+            loginForm.style.display = 'block';
+        });
+    </script>
+</body>
+
+</html>

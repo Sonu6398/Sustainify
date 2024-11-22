@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pickup Boy Login and Registration</title>
+    <link rel="stylesheet" href="../Public/CSS/PickupLoginPageStylesheet.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Pickup Boy Login Form -->
+        <div id="login-container">
+            <h2>Pickup Boy Login</h2>
+            <form id="pickup-login-form">
+                <input type="email" id="pickup-login-email" placeholder="Email" required>
+                <input type="password" id="pickup-login-password" placeholder="Password" required>
+                <button type="submit">Login</button>
+                <p id="login-error-message" style="display:none; color:red;">Invalid login details, please try again.</p>
+            </form>
+            <p>Don't have an account? <a href="#" id="show-signup">Sign Up</a></p>
+            <p>Forgot password? <a href="#">Click here</a></p>
+        </div>
+
+        <!-- Pickup Boy Registration Form -->
+        <div id="signup-container" style="display: none;">
+            <h2>Pickup Boy Registration</h2>
+            <form id="pickup-signup-form">
+                <input type="text" id="pickup-signup-name" placeholder="Name" required>
+                <input type="tel" id="pickup-signup-mobile" placeholder="Mobile Number" pattern="[0-9]{10}" required>
+                <input type="email" id="pickup-signup-email" placeholder="Email" required>
+                <input type="password" id="pickup-signup-password" placeholder="Password" required>
+                <button type="submit">Sign Up</button>
+                <p id="signup-error-message" style="display:none; color:red;">Registration failed, please try again.</p>
+            </form>
+            <p>Already have an account? <a href="#" id="show-login">Login</a></p>
+        </div>
+    </div>
+
+    <script >
+        // Show Signup Form
+        document.getElementById('show-signup').addEventListener('click', function() {
+            document.getElementById('login-container').style.display = 'none';
+            document.getElementById('signup-container').style.display = 'block';
+        });
+
+        // Show Login Form
+        document.getElementById('show-login').addEventListener('click', function() {
+            document.getElementById('signup-container').style.display = 'none';
+            document.getElementById('login-container').style.display = 'block';
+        });
+
+        // Handle Pickup Boy Login Form Submission
+        document.getElementById('pickup-login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('pickup-login-email').value;
+            const password = document.getElementById('pickup-login-password').value;
+
+            // Simple mock validation (replace with real backend check)
+            if (email === 'pickup@example.com' && password === 'pickup123') {
+                alert('Login Successful');
+                window.location.href = "pickupDashboard.html";  // Redirect to pickup boy dashboard
+            } else {
+                document.getElementById('login-error-message').style.display = 'block';
+            }
+        });
+
+        // Handle Pickup Boy Signup Form Submission
+        document.getElementById('pickup-signup-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('pickup-signup-name').value;
+            const mobile = document.getElementById('pickup-signup-mobile').value;
+            const email = document.getElementById('pickup-signup-email').value;
+            const password = document.getElementById('pickup-signup-password').value;
+
+            // Simple mock signup logic (replace with real backend)
+            if (name && mobile && email && password) {
+                alert('Signup Successful');
+                window.location.href = "pickupDashboard.html";  // Redirect after signup
+            } else {
+                document.getElementById('signup-error-message').style.display = 'block';
+            }
+        });
+
+    </script>
+</body>
+</html>

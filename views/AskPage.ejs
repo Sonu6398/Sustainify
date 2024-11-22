@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Login Type</title>
+    <link rel="stylesheet" href="CSS/AskPageStylesheet.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Select Your Login Type</h2>
+        <div class="button-container">
+            <a href="/AdministratorLoginPage"><button id="admin-login">Administrator</button></a>
+            <a href="/pickupBoySignUpPage"><button id="pickup-login">Pickup Boy</button></a>
+            <a href="/LoginPage"><button id="user-login">Normal User</button></a>
+        </div>
+    </div>
+
+    <script >
+        document.getElementById("admin-login").onclick = function() {
+            window.location.href = "AdministratorLoginPage.html"; 
+        };
+
+        document.getElementById("pickup-login").onclick = function() {
+            window.location.href = "PickupBoyLoginPage.html"; 
+        };
+
+        document.getElementById("user-login").onclick = function() {
+            window.location.href = "LoginPage.html"; 
+        };
+    </script>
+</body>
+</html>

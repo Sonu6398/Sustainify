@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <link rel="stylesheet" href="CSS/LoginPageStylesheet.css">
+    <style>
+        .error-message {
+            color: red;
+            margin-top: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="form-container">
+            <form id="signup-form" method="post" action="/Signup">
+                <h2 style="text-align: center;">Sign Up</h2>
+                <p class="error-message"><%= errorMessage %></p>
+                <input name="name" type="text" id="signup-name" placeholder="Name" required style="width: 275px;">
+                <input name="email" type="email" id="signup-email" placeholder="Email" required style="width: 275px;">
+                <input name="password" type="password" id="signup-password" 
+                       placeholder="Password (8+ chars, 1 uppercase, 1 lowercase, 1 special char, 1 number)" 
+                       required minlength="8" style="width: 275px;">
+                <input name="confpassword" type="password" id="signup-confirm-password" 
+                       placeholder="Confirm Password" required minlength="8" style="width: 275px;">
+                <button type="submit">Sign Up</button>
+                <p>Already have an account? <a href="/LoginPage" id="show-login">Login</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Password validation function
+        function validatePassword(password) {
+            const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            return regex.test(password);
+        }
+
+        // Get signup form and add validation
+        const signupForm = document.getElementById('signup-form');
+        signupForm.addEventListener('submit', function (e) {
+            const password = document.getElementById('signup-password').value;
+            const confirmPassword = document.getElementById('signup-confirm-password').value;
+
+            if (!validatePassword(password)) {
+                e.preventDefault(); // Prevent form submission
+                alert('Password must be at least 8 characters long, include one uppercase letter, one lowercase letter, one special character, and one number.');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                e.preventDefault(); // Prevent form submission
+                alert('Passwords do not match. Please re-enter the same password in both fields.');
+            }
+        });
+    </script>
+</body>
+</html>

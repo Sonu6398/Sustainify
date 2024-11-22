@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Scrap Price Calculator</title>
+    <link rel="stylesheet" href="CSS/PriceCalculatorStylesheet.css">
+    <script
+      src="https://kit.fontawesome.com/c5a92afa13.js"
+      crossorigin="anonymous"
+    ></script>
+</head>
+<body>
+    <nav>
+        <p><b>Sustainify</b></p>
+        <ul>
+            <li><a href="/index">Home</a></li>
+            <li><a href="/ScrapRates">Scrap Rates</a></li>
+            <li><a href="/PriceCalculator">Price Calculator</a></li>
+        </ul>
+    </nav>
+    <br><br>
+    <div class="container">
+        <h1>Scrap Price Calculator</h1>
+
+        <div class="instructions">
+            <h2>Welcome to the Dynamic Scrap Price Calculator!</h2>
+            <p>This tool helps you estimate the total value of various scrap materials you may want to sell.</p>
+            <ul>
+                <li>Select a category (e.g., Paper, Metal, Electronics).</li>
+                <li>Choose the specific item from the dropdown list.</li>
+                <li>Enter the quantity in kilograms.</li>
+                <li>Click "Add Item" to add more categories and items as needed.</li>
+                <li>Click "Calculate Price" to get the total value.</li>
+            </ul>
+        </div>
+
+        <div class="form-section">
+            <label for="itemContainer">Items:</label>
+            <div id="itemContainer"></div>
+
+            <button type="button" onclick="addCategory()">Add Item</button>
+            <button type="button" onclick="calculatePrice()">Calculate Price</button>
+        </div>
+
+        <h2 class="total-price">Total Price: Rs <span id="totalPrice">0</span></h2>
+    </div>
+    <br><br><br>
+    <footer>
+        <div class="footernav" id="about_us">
+            <div class="social_icons">
+                <a href="https://www.facebook.com/iiitall/"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.instagram.com/iiit.allahabad/"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://twitter.com/iiita_official?lang=en"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+            <div class="footernav">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="https://www.iiita.ac.in/" target="_blank">About IIITA</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footerbottom">
+            <p>Copyright &copy;2023</p>
+        </div>
+    </footer>
+
+    <script>
+        let scrapPrices = {};
+
+        // Fetch scrap data from backend API
+        async function fetchScrapData() {
+            try {
+                const response = await fetch('/api/scrap-items');
+                const data = await response.json();
+
+                // Organize data by category
+                scrapPrices = data.reduce((acc, item) => {
+                    if (!acc[item.category]) acc[item.category] = {};
+                    acc[item.category][item.name] = item.price;
+                    return acc;
+                }, {});
+            } catch (error) {
+                console.error('Error fetching scrap data:', error);
+            }
+        }
+
+        // Dynamically add a category and corresponding items
+        function addCategory() {
+            const container = document.getElementById('itemContainer');
+            const categorySelect = document.createElement('select');
+            const itemSelect = document.createElement('select');
+            const quantityInput = document.createElement('input');
+            const removeButton = document.createElement('button');
+
+            // Add default options
+            categorySelect.innerHTML = '<option value="">Select Category</option>';
+            for (const category in scrapPrices) {
+                categorySelect.innerHTML += `<option value="${category}">${category}</option>`;
+            }
+
+            categorySelect.addEventListener('change', function () {
+                const selectedCategory = this.value;
+                itemSelect.innerHTML = '<option value="">Select Item</option>';
+                if (scrapPrices[selectedCategory]) {
+                    for (const item in scrapPrices[selectedCategory]) {
+                        itemSelect.innerHTML += `<option value="${item}">${item}</option>`;
+                    }
+                }
+            });
+
+            // Configure quantity input
+            quantityInput.type = 'number';
+            quantityInput.placeholder = 'Quantity (kg)';
+            quantityInput.min = 0;
+
+            // Configure remove button
+            removeButton.textContent = 'Remove';
+            removeButton.classList.add('remove-btn');
+            removeButton.onclick = function () {
+                container.removeChild(categorySelect);
+                container.removeChild(itemSelect);
+                container.removeChild(quantityInput);
+                container.removeChild(removeButton);
+            };
+
+            // Append elements to the container
+            container.appendChild(categorySelect);
+            container.appendChild(itemSelect);
+            container.appendChild(quantityInput);
+            container.appendChild(removeButton);
+        }
+
+        // Calculate total price
+        function calculatePrice() {
+            const itemContainer = document.getElementById('itemContainer');
+            const items = itemContainer.children;
+            let total = 0;
+
+            for (let i = 0; i < items.length; i += 4) {
+                const category = items[i].value;
+                const item = items[i + 1].value;
+                const quantity = parseFloat(items[i + 2].value) || 0;
+
+                if (category && item) {
+                    total += scrapPrices[category][item] * quantity;
+                }
+            }
+
+            document.getElementById('totalPrice').innerText = total.toFixed(2);
+        }
+
+        // Initialize data fetching
+        window.onload = fetchScrapData;
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password</title>
+    <link rel="stylesheet" href="CSS/LoginPageStylesheet.css">
+    <style>
+        .error-message {
+            color: red;
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        .success-message {
+            color: green;
+            margin-top: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="form-container">
+            <!-- Reset Password Form -->
+            <form id="reset-password-form" method="post" action="/pickupNewPass">
+                <h2 style="text-align: center;">Reset Password</h2>
+                <input type="password" id="new-password" placeholder="Enter New Password" name="newpass" minlength="8" required style="width: 275px;">
+                <input type="password" id="confirm-password" placeholder="Confirm Password" minlength="8" required style="width: 275px;">
+                <p class="error-message" id="password-error" style="display:none;">Passwords do not match!</p>
+                <p class="success-message" id="password-success" style="display:none;">Password reset successfully!</p>
+                <button type="submit" id="reset-password-btn">Reset Password</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Get elements
+        const passwordError = document.getElementById('password-error');
+        const passwordSuccess = document.getElementById('password-success');
+        const newPassword = document.getElementById('new-password');
+        const confirmPassword = document.getElementById('confirm-password');
+        const resetPasswordForm = document.getElementById('reset-password-form');
+
+        // Validate password match on form submission
+        resetPasswordForm.addEventListener('submit', function (e) {
+            if (newPassword.value !== confirmPassword.value) {
+                // Prevent form submission if passwords don't match
+                e.preventDefault();
+                passwordError.style.display = 'block';
+                passwordSuccess.style.display = 'none';
+            } else {
+                // Allow form submission if passwords match
+                passwordError.style.display = 'none';
+                passwordSuccess.style.display = 'block';
+                // Form will be submitted automatically since we don't call preventDefault
+            }
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Page with Navbar and Footer</title>
+    <link rel="stylesheet" href="CSS/ChooseOptionPageStylesheet.css">
+    <!-- Add Font Awesome for Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script
+      src="https://kit.fontawesome.com/c5a92afa13.js"
+      crossorigin="anonymous"
+    ></script>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="container">
+            <h1><a style="text-decoration: none;color: inherit;" href="/index">Sustainify</a></h1>
+            <ul>
+                <li><a href="/index">Home</a></li>
+                <li><a href="/ScrapRates">Scrap Rates</a></li>
+                <li><a href="/PriceCalculator">Price Calculator</a></li>
+                <li><a href="#AbtUs">About Us</a></li>
+                <!-- <li><a href="#">Services</a></li> -->
+                <li><a href="/Profile"><%= nm %></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Section -->
+    <div class="main-container">
+        <div class="text-section">
+            <h1>Sell your recyclables online with <span>Sustainify!</span></h1>
+            <p>Paper - Plastics - Metals - Appliances</p>
+            <p>Don't say no to extra money!!</a></p>
+            <img src="assets/img/ChooseImg1.png" alt="Recycling Illustration" class="illustration">
+        </div>
+        
+        <div class="impact-section">
+            <h3>Nice to see you</h3>
+            <p>Impact made by Sustainify</p>
+            <h2>515 KG <br> RECYCLED</h2>
+            <img src="assets/img/ChooseImg2.png" alt="Impact Scale Image" class="scale-img">
+            <p>Wish to recycle more?</p>
+            <form action="/SchedulePickup" method="post">
+                <input type="hidden" name="nm" value="<%= nm %>">
+                <button class="action-btn" type="submit">Schedule a Pickup</button>
+            </form>         
+            <form action="/Checkoptions" method="get">
+                <input type="hidden" name="nm" value="<%= nm %>">
+                <button class="action-btn">Check My Pickups</button>
+            </form>
+            
+        </div>
+    </div>
+    <br><br><br><br>
+    <div class="steps">
+
+        <p style="font-size: 40px;color: #171717;">How it works?</p><br><br><br><br><br>
+        <p style="font-size: 30px; color: #666666;">In three Easy steps</p>
+        
+    </div>
+    <br>
+
+    <div class="table">
+        <table>
+            <tr><img id="img1" src="assets/img/1.png" alt="Img"></tr>
+            <tr><img src="assets/img/2.png" id="img2" alt="Img"></tr>
+            <tr><img src="assets/img/pickupboy.png" id="img3" alt="Img"></tr>
+        </table>
+    </div>
+    <br>
+    <br>
+    <p style="font-size: 40px;color: #171717;text-align: center;">Why Sustainify?</p>
+    <div class="why">
+        <!-- <table>
+            <tr>
+                <td> -->
+                <ul>
+                    <li><b>Eco-Friendly Impact:</b> Promotes sustainable waste management by recycling scrap.</li>
+                    <li><b>User-Centric Platform:</b> Easy-to-use interface for efficient scrap disposal.</li>
+                    <li><b>Community Engagement:</b> Connects recyclers, sellers, and buyers seamlessly.</li>
+                    <li><b>Real-Time Tracking:</b> Offers live updates for scrap collection and processing.</li>
+                </ul>
+                <!-- </td> -->
+                <!-- <td>
+                    <img src="Bottom.svg" alt="Img">
+                </td> -->
+            <!-- </tr> -->
+            
+        <!-- </table> -->
+    </div>
+    <!-- <div class="">
+        <div class="AboutUs">
+            <img src="About-us-background1.avif" alt="Img"  >
+        </div>
+        
+    </div> -->
+    <div class="AboutUs" id="AbtUs">
+        <div class="AboutUs-text" >
+            <p style="color: black;"><b>About Us</b></p>
+            <ul>
+                <li><b>Mission:</b> To simplify scrap collection and recycling by offering fair prices, easy scheduling, and eco-friendly solutions for every home.</li>
+                <li><b>Vision:</b>To lead the way in sustainable scrap management, making recycling convenient and rewarding for all.</li>
+                <li><b>Privacy and Security:</b> We prioritize the protection of users' data with robust encryption and strict privacy measures.</li>
+                <li><b>User-Friendly Interface:</b> Our website offers intuitive navigation and comprehensive search features for reporting and finding lost items.</li>
+
+            </ul>
+        </div>
+        <div class="AboutUsImg">
+            <img src="assets/img/About-Us1.avif" alt="Img" width="500px" height="300px">
+        </div>
+    </div>
+    
+
+    <!-- Footer -->
+    <footer>
+        <div class="footerbottom">
+            <p>&copy; 2024 Sustainify. All Rights Reserved.</p>
+        </div>
+        <div class="footernav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+            </ul>
+        </div>
+        <div class="social_icons">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+        </div>
+    </footer>
+
+</body>
+</html>
