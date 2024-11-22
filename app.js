@@ -8,7 +8,7 @@ const pickmodel = require("./models/pickup");
 const pickupboy=require("./models/PickUser");
 const ScrapItem = require('./models/ScrapItem'); // Adjust path if needed
 // const bodyParser = require('body-parser');
-
+require('dotenv').config();
 
 const app = express();
 
@@ -32,8 +32,8 @@ app.use(
 var transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "anshuyadav202301jan@gmail.com",
-    pass: "vvio xfbb ovzu iazq",
+    user: process.env.MAIL,
+    pass: process.env.PASS,
   },
 });
 
